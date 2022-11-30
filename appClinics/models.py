@@ -1,14 +1,15 @@
 from sqlalchemy import Column, Integer, String, Float, Boolean, Text, ForeignKey, Enum, DateTime
 from sqlalchemy.orm import relationship, backref
 from appClinics import db, app
-from enum import Enum as UserEnum
-from enum import Enum as GenderEnum
+from enum import Enum as BaseEnum
+# from enum import Enum as GenderEnum
+# from enum import Enum as ActionEnum
 from flask_login import UserMixin
 from datetime import datetime
 
 
 #
-class UserRole(UserEnum):
+class UserRole(BaseEnum):
     PATIENT = 1
     NURSE = 2
     DOCTOR = 3
@@ -16,9 +17,21 @@ class UserRole(UserEnum):
     ADMIN = 5
 
 
-class GenderRole(GenderEnum):
+class GenderRole(BaseEnum):
     FEMALE = 0
     MALE = 1
+
+
+class ActionRole(BaseEnum):
+    MEDICINE = 1
+    REGULATIONS = 2
+
+
+class ActionMedicineRole(BaseEnum):
+    ADD = 1
+    CHANGE = 2
+    DELETE = 3
+    FOUND = 4
 
 
 class BaseModel(db.Model):
@@ -31,9 +44,9 @@ class User(BaseModel):
     __tablename__ = 'User'
 
     name = Column(String(50), nullable=False)
-    gender = Column(Boolean(GenderEnum), default=GenderRole.MALE)
+    gender = Column(Enum(GenderRole), default=GenderRole.MALE)
     address = Column(String(50), nullable=False)
-    role = Column(Boolean(UserRole), default=UserRole.PATIENT)
+    role = Column(Enum(UserRole), nullable=False)
     CCCD = Column(String(12), nullable=False)
     phone = Column(String(12), nullable=False)
     avatar = Column(String(100), nullable=False)
@@ -48,7 +61,7 @@ class Mail(BaseModel):
     content = Column(String(50), nullable=False)
 
 
-class Staff(BaseModel):
+class Staff(BaseModel):  # nhanvien
     __tablename__ = 'Staff'
     user_id = Column(Integer, ForeignKey(User.id), nullable=False)
     username = Column(String(50), nullable=False, unique=True)
@@ -56,7 +69,7 @@ class Staff(BaseModel):
     salary = Column(Integer, nullable=False)
 
 
-class Clinics(BaseModel):
+class Clinics(BaseModel):  # phongkham
     __tablename__ = 'Clinics'
     name = Column(String(50), nullable=False)
     address = Column(String(50), nullable=False)
@@ -65,7 +78,7 @@ class Clinics(BaseModel):
         return self.name
 
 
-class Appointment(BaseModel):
+class Appointment(BaseModel):  # lichkham
     __tablename__ = 'Appointment'
     patient_id = Column(Integer, ForeignKey(User.id), nullable=False)
     nurse_id = Column(Integer, ForeignKey(User.id), nullable=False)
@@ -73,7 +86,7 @@ class Appointment(BaseModel):
     date = Column(DateTime, nullable=True)
 
 
-class MedicalReport(BaseModel):
+class MedicalReport(BaseModel):  # PhieuKham
     __tablename__ = 'MedicalReport'
     doctor_id = Column(Integer, ForeignKey(User.id), nullable=False)
     appointment_id = Column(Integer, ForeignKey(Appointment.id), nullable=False)
@@ -81,7 +94,7 @@ class MedicalReport(BaseModel):
     predict = Column(String(255), nullable=False)
 
 
-class Medicine(BaseModel):
+class Medicine(BaseModel):  # thuoc
     __tablename__ = 'Medicine'
     name = Column(String(50), nullable=False)
     content = Column(String(50), nullable=False)
@@ -92,12 +105,49 @@ class Medicine(BaseModel):
         return self.name
 
 
-class Prescribe(BaseModel):
+class Prescribe(BaseModel):  # donThuoc
     __tablename__ = 'Prescribe'
     medicine_id = Column(Integer, ForeignKey(Medicine.id), nullable=False)
     medicalReport_id = Column(Integer, ForeignKey(MedicalReport.id), nullable=False)
     amount = Column(Integer, nullable=False)
     userManual = Column(String(255), nullable=False)
+
+
+class Bill(BaseModel):  # hoaDon
+    __tablename__ = 'Bill'
+    medicalReport_id = Column(Integer, ForeignKey(MedicalReport.id), nullable=False)
+    cashier_id = Column(Integer, ForeignKey(User.id), nullable=False)
+    medicalExpenses = Column(Integer, nullable=False)
+    medicineExpenses = Column(Integer, nullable=False)
+
+
+class Action(BaseModel):  # quantri
+    __tablename__ = 'Action'
+    admin_id = Column(Integer, ForeignKey(User.id), nullable=False)
+    date = Column(DateTime, nullable=False)
+    type = Column(Enum(ActionRole), nullable=False)
+
+
+class ManageMedicine(BaseModel):  # quantriThuoc
+    __tablename__ = 'ManageMedicine'
+    action_id = Column(Integer, ForeignKey(Action.id), nullable=False)
+    medicine_id = Column(Integer, ForeignKey(Medicine.id), nullable=False)
+    action = Column(Enum(ActionMedicineRole), nullable=False)
+
+
+class Regulations(BaseModel):  # quantriThuoc
+    __tablename__ = 'Regulations'
+    patientAmount = Column(Integer, nullable=False)
+    medicalExpenses = Column(Integer, nullable=False)
+
+
+class ManageRegulation(BaseModel):  # quantriThuoc
+    __tablename__ = 'ManageRegulation'
+    action_id = Column(Integer, ForeignKey(Action.id), nullable=False)
+    regulation_id = Column(Integer, ForeignKey(Regulations.id), nullable=False)
+    content = Column(String(255), nullable=False)
+
+
 # prod_tag = db.Table('prod_tag',
 #                     Column('product_id', ForeignKey('product.id'), nullable=False, primary_key=True),
 #                     Column('tag_id', ForeignKey('tag.id'), nullable=False, primary_key=True))
