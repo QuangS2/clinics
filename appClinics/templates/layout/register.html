@@ -1,0 +1,26 @@
+<div class="row form-row">
+    {% for attr in user_atb %}
+    <div class="form-floating mb-3 mt-3 col-sm-6">
+        {% if attr == 'Gender' %}
+        <form action="/action_page.php" class="d-flex p-3">
+            <div class="form-check col-sm-4">
+                <input type="radio" class="form-check-input" id="male" name="gender" value="option1" checked>
+                <label class="form-check-label" for="male">Nam</label>
+            </div>
+            <div class="form-check col-sm-4">
+                <input type="radio" class="form-check-input" id="female" name="gender" value="option2">
+                <label class="form-check-label" for="female">Nữ</label>
+            </div>
+            <div class="form-check col-sm-4">
+                <input type="radio" class="form-check-input" id="other" name="gender" value="option3">
+                <label class="form-check-label" for="other">Khác</label>
+            </div>
+        </form>
+        {% else %}
+        <input type="text" class="form-control" id={{attr}} placeholder="Enter email" name="email" required>
+        <label for={{attr}}>{{attr}}</label>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>
