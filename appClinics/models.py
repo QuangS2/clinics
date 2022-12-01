@@ -204,14 +204,20 @@ if __name__ == '__main__':
 
 
         # with open(f'data/medicine.json', encoding='utf-8') as f:
-        #     datas = json.load(f)['result']['items']
+        # #     datas = json.load(f)['result']['items']
+        #     datas = json.load(f)
         #     for item in datas:
-        #         if len(item['hoatChat']) < 255 and len(item['tenThuoc']) < 75 and len(item['donViTinh']) < 50:
-        #             m = Medicine(name = item['tenThuoc'],
-        #                          unit = item['donViTinh'],
-        #                          price = item['giaBanBuon'],
-        #                          content = item['hoatChat'])
-        #             db.session.add(m)
-        #             db.session.commit()
+        #         # if len(item['hoatChat']) < 255 and len(item['tenThuoc']) < 75 and len(item['donViTinh']) < 50:
+        #         #     m = Medicine(name = item['tenThuoc'],
+        #         #                  unit = item['donViTinh'],
+        #         #                  price = item['giaBanBuon'],
+        #         #                  content = item['hoatChat'])
+        #         m = Medicine(name=item['name'],
+        #          unit=item['unit'],
+        #          price=item['price'],
+        #          content=item['content'])
+        #         db.session.add(m)
+        #         db.session.commit()
+
 
 

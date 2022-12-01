@@ -1,0 +1,308 @@
+[
+ {
+  "name": "Dibulaxan",
+  "content": "Paracetamol 325 mg; Ibuprofen 200 mg",
+  "unit": "Viên",
+  "price": 550
+ },
+ {
+  "name": "Sorbitol 5g",
+  "content": "Mỗi gói 5g chứa: Sorbitol 5g",
+  "unit": "Gói",
+  "price": 900
+ },
+ {
+  "name": "Sulpirid 200 mg",
+  "content": "Sulpirid 200 mg",
+  "unit": "Viên",
+  "price": 1200
+ },
+ {
+  "name": "Metoran",
+  "content": "Metoclopramid hydroclorid 10mg/2ml",
+  "unit": "Ống",
+  "price": 1995
+ },
+ {
+  "name": "Vitamin K1 10 mg/1ml",
+  "content": "Vitamin K1 10mg/1 ml",
+  "unit": "Ống",
+  "price": 5000
+ },
+ {
+  "name": "Naphazolin 0,05%",
+  "content": "Mỗi 5 ml chứa: Naphazolin hydroclorid 2,5mg",
+  "unit": "Lọ",
+  "price": 4200
+ },
+ {
+  "name": "PVP-Iodine 10%",
+  "content": "Mỗi 100ml chứa: Povidon iod 10g",
+  "unit": "Lọ",
+  "price": 170000
+ },
+ {
+  "name": "Danapha-Trihex 2",
+  "content": "Trihexyphenidyl hydroclorid 2 mg",
+  "unit": "Viên",
+  "price": 300
+ },
+ {
+  "name": "Diệp Hạ Châu",
+  "content": "Cao khô Diệp hạ châu đắng (tương ứng với 250 mg Diệp hạ châu đắng) 60 mg",
+  "unit": "Viên",
+  "price": 945
+ },
+ {
+  "name": "4-Epeedo-50",
+  "content": "Epirubicin hydrochlorid 50mg",
+  "unit": "Hộp",
+  "price": 365000
+ },
+ {
+  "name": "PVP-Iodine 10%",
+  "content": "Mỗi 100ml chứa: Povidon iod 10g",
+  "unit": "Lọ",
+  "price": 26250
+ },
+ {
+  "name": "Cytomib",
+  "content": "Bortezomib 3,5mg",
+  "unit": "Hộp",
+  "price": 2070825
+ },
+ {
+  "name": "Bortezomib for Injection 3.5 mg",
+  "content": "Bortezomib (dưới dạng Bortezomib mannitol boric ester)  3,5mg",
+  "unit": "Hộp",
+  "price": 2070825
+ },
+ {
+  "name": "PVP-Iodine 10%",
+  "content": "Mỗi 100ml chứa: Povidon iod 10g",
+  "unit": "Lọ",
+  "price": 10500
+ },
+ {
+  "name": "Paracetamol",
+  "content": "Paracetamol 500mg",
+  "unit": "Viên",
+  "price": 500
+ },
+ {
+  "name": "Wineso 20",
+  "content": "Esomeprazol (dưới dạng 261,31mg pellet bao tan trong ruột chứa 8,5% Esomeprazol magnesi trihydrat) 20mg",
+  "unit": "viên",
+  "price": 4700
+ },
+ {
+  "name": "Emotaxin 1 g",
+  "content": "Cefotaxim (dưới dạng Cefotaxim natri) 1g",
+  "unit": "Lọ",
+  "price": 25800
+ },
+ {
+  "name": "Humalog Mix50 Kwikpen",
+  "content": "Mỗi 3ml chứa:\nInsulin lispro 300U (tương đương 10,5mg)",
+  "unit": "Bút tiêm",
+  "price": 240000
+ },
+ {
+  "name": "Paracetamol",
+  "content": "Paracetamol 500mg",
+  "unit": "Viên",
+  "price": 500
+ },
+ {
+  "name": "Wineso 20",
+  "content": "Esomeprazol (dưới dạng 261,31mg pellet bao tan trong ruột chứa 8,5% Esomeprazol magnesi trihydrat) 20mg",
+  "unit": "viên",
+  "price": 4700
+ },
+ {
+  "name": "Emotaxin 1 g",
+  "content": "Cefotaxim (dưới dạng Cefotaxim natri) 1g",
+  "unit": "Lọ",
+  "price": 25800
+ },
+ {
+  "name": "Humalog Mix50 Kwikpen",
+  "content": "Mỗi 3ml chứa:\nInsulin lispro 300U (tương đương 10,5mg)",
+  "unit": "Bút tiêm",
+  "price": 240000
+ },
+ {
+  "name": "Paracetamol",
+  "content": "Paracetamol 500mg",
+  "unit": "Viên",
+  "price": 500
+ },
+ {
+  "name": "Wineso 20",
+  "content": "Esomeprazol (dưới dạng 261,31mg pellet bao tan trong ruột chứa 8,5% Esomeprazol magnesi trihydrat) 20mg",
+  "unit": "viên",
+  "price": 4700
+ },
+ {
+  "name": "Emotaxin 1 g",
+  "content": "Cefotaxim (dưới dạng Cefotaxim natri) 1g",
+  "unit": "Lọ",
+  "price": 25800
+ },
+ {
+  "name": "Humalog Mix50 Kwikpen",
+  "content": "Mỗi 3ml chứa:\nInsulin lispro 300U (tương đương 10,5mg)",
+  "unit": "Bút tiêm",
+  "price": 240000
+ },
+ {
+  "name": "Bovega",
+  "content": "Cao khô Diệp hạ châu đắng (tương ứng với 500 mg Diệp hạ châu đắng) 120 mg",
+  "unit": "Viên",
+  "price": 1323
+ },
+ {
+  "name": "Phenobarbital 10%",
+  "content": "Natri phenobarbital 200mg/2ml",
+  "unit": "Ống",
+  "price": 8820
+ },
+ {
+  "name": "Contussin New",
+  "content": "Dextromethorphan HBr; Clorpheniramin maleat; Guaifenesin; Natri benzoat; Natri citrat",
+  "unit": "Chai",
+  "price": 14500
+ },
+ {
+  "name": "Ticoldex",
+  "content": "Mỗi lọ 5 ml chứa: Cloramphenicol 20 mg; Dexamethason natri phosphat 5 mg",
+  "unit": "Lọ",
+  "price": 5093
+ },
+ {
+  "name": "Immotane",
+  "content": "Tenofovir alafenamid (dưới dạng Tenofovir alafenamid fumarat) 25 mg",
+  "unit": "Viên",
+  "price": 36000
+ },
+ {
+  "name": "Agosys",
+  "content": "Agomelatine ",
+  "unit": "Viên",
+  "price": 14500
+ },
+ {
+  "name": "Mecefix-B.E 100",
+  "content": "Mỗi 2 g chứa: Cefixim (dưới dạng Cefixim trihydrat) 100mg",
+  "unit": "Gói",
+  "price": 6230
+ },
+ {
+  "name": "Eto 90",
+  "content": "Etoricoxib 90mg",
+  "unit": "Viên",
+  "price": 9500
+ },
+ {
+  "name": "Leptica 500 mg",
+  "content": "Levetiracetam 500mg",
+  "unit": "viên",
+  "price": 9900
+ },
+ {
+  "name": "Salzol",
+  "content": "Salbutamol (dưới dạng salbutamol sulfat) 2mg/5ml",
+  "unit": "Chai",
+  "price": 39500
+ },
+ {
+  "name": "Dinpocef oral suspension",
+  "content": "Mỗi 5ml hỗn dịch chứa: Cefpodoxime (dưới dạng Cefpodoxime Proxetil) 50mg",
+  "unit": "Lọ",
+  "price": 92000
+ },
+ {
+  "name": "Tadimax",
+  "content": "Cao khô Trinh nữ hoàng cung (tương ứng với 2000 mg lá trinh nữ hoàng cung) 80 mg; Cao khô hỗn hợp (tương ứng với 666 mg Tri mẫu; 666 mg Hoàng bá; 666 mg Ích mẫu; 83 mg Đào nhân; 830 mg Trạch tả; 500 mg Xích thược) 320 mg; Nhục quế 8,3 mg",
+  "unit": "Viên",
+  "price": 4935
+ },
+ {
+  "name": "Malapi solution",
+  "content": "Mỗi ml chứa: Magnesi lactat dihydrat  18,6mg ; Magnesi pidolat 93,6mg ; Pyridoxin hydroclorid 1,0mg",
+  "unit": "Ống",
+  "price": 5000
+ },
+ {
+  "name": "Amalgel 500 mg",
+  "content": "Almagate 500mg",
+  "unit": "Viên",
+  "price": 7800
+ },
+ {
+  "name": "Opelirin",
+  "content": "Pregabalin 75mg",
+  "unit": "Viên",
+  "price": 9900
+ },
+ {
+  "name": "BIOFLEKS 10% DEXTRAN 40 0.9% ISOTONIC SODIUM CHLORIDE SOLUTION",
+  "content": "Mỗi 100 ml chứa:  Dextran 40:  10,0g Sodium cloride: 0,9g           ",
+  "unit": "Túi",
+  "price": 300000
+ },
+ {
+  "name": "Zinnat tablets 125mg",
+  "content": "Cefuroxim (dưới dạng Cefuroxim axetil) 125mg",
+  "unit": "Viên",
+  "price": 6157
+ },
+ {
+  "name": "Ratida 400mg film-coated tablets",
+  "content": "Moxifloxacin (dưới dạng Moxifloxacin hydrochlorid) 400mg",
+  "unit": "viên",
+  "price": 49600
+ },
+ {
+  "name": "Alxac Tab.",
+  "content": "Albendazol 400 mg",
+  "unit": "viên",
+  "price": 5000
+ },
+ {
+  "name": "Amitriptylin 10mg",
+  "content": "Amitriptylin HCl 10 mg",
+  "unit": "Viên",
+  "price": 190
+ },
+ {
+  "name": "Aminazin 25mg",
+  "content": "Clorpromazin hydroclorid 25mg",
+  "unit": "Viên",
+  "price": 220
+ },
+ {
+  "name": "Bi-Daphazyl",
+  "content": "Spiramycin 1.500.000IU; Metronidazol 250 mg",
+  "unit": "Viên",
+  "price": 4500
+ },
+ {
+  "name": "Drenoxol",
+  "content": "Ambroxol  hydrochlorid 30mg/10ml",
+  "unit": "Ống",
+  "price": 9258
+ },
+ {
+  "name": "Gastevin 30mg",
+  "content": "Lansoprazole 30 mg",
+  "unit": "viên",
+  "price": 9500
+ },
+ {
+  "name": "Mecolzine",
+  "content": "Mesalazin 500mg",
+  "unit": "viên",
+  "price": 10620
+ }
+]
