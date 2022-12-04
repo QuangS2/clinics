@@ -1,6 +1,7 @@
-from flask import render_template, request
-from appClinics import app, dao
-
+from flask import render_template, request, redirect
+from appClinics import app, dao, login
+from flask_login import login_user, logout_user
+from appClinics.decorator import annonynous_user
 
 @app.route("/")
 def index():
@@ -16,6 +17,32 @@ def appointment():
     user_atb = dao.load_user_attributes()
     return render_template('appointment.html', user_atb=user_atb)
 
+@app.route("/login")
+@annonynous_user
+def login_page():
+    return render_template('login.html')
+
+@app.route('/login', methods=['post'])
+def login_my_user():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        user = dao.auth_user(username=username, password=password)
+        if user:
+            login_user(user=user)
+            n = request.args.get('next')
+            return redirect(n if n else '/')
+
+    return render_template('login.html')
+@app.route('/logout')
+def logout_my_user():
+    logout_user()
+    return redirect('/login')
+
+@login.user_loader
+def load_user(user_id):
+    return dao.get_user_by_id(user_id)
 
 if __name__ == '__main__':
     app.run(debug=True)

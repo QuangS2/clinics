@@ -7,14 +7,14 @@ import cloudinary
 
 
 app = Flask(__name__)
-# app.secret_key = '4567890sdfghjklcvbnvb4567fg6yug'
+app.secret_key = '4567890sdfghjklcvbnvb4567fg6yug'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:%s@localhost/Clinicsdb?charset=utf8mb4' % quote('123456')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 # app.config['CART_KEY'] = 'cart'
 
 db = SQLAlchemy(app=app)
 
-# login = LoginManager(app=app)
+login = LoginManager(app=app)
 
 # cloudinary.config(cloud_name='dxxwcby8l', api_key='448651448423589', api_secret='ftGud0r1TTqp0CGp5tjwNmkAm-A')
 

@@ -3,8 +3,6 @@ from sqlalchemy.orm import relationship, backref
 from appClinics import db, app
 from enum import Enum as BaseEnum
 import json
-# from enum import Enum as GenderEnum
-# from enum import Enum as ActionEnum
 from flask_login import UserMixin
 from datetime import datetime
 
@@ -21,6 +19,7 @@ class UserRole(BaseEnum):
 class GenderRole(BaseEnum):
     FEMALE = 0
     MALE = 1
+    OTHER = 2
 
 
 class ActionRole(BaseEnum):
@@ -41,13 +40,13 @@ class BaseModel(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
 
 
-class User(BaseModel):
+class User(BaseModel, UserMixin):
     __tablename__ = 'User'
 
     name = Column(String(50), nullable=False)
     gender = Column(Enum(GenderRole), default=GenderRole.MALE)
     address = Column(String(50), nullable=False)
-    role = Column(Enum(UserRole), nullable=False)
+    role = Column(Enum(UserRole), default=UserRole.PATIENT)
     CCCD = Column(String(12), nullable=False)
     phone = Column(String(12), nullable=False)
     avatar = Column(String(100), nullable=False)
@@ -100,7 +99,7 @@ class Medicine(BaseModel):  # thuoc
     name = Column(String(75), nullable=False)
     content = Column(String(255), nullable=False)
     unit = Column(String(50), nullable=False)
-    price = Column(Integer,nullable=False)
+    price = Column(Integer, nullable=False)
     active = Column(Boolean, default=True)
 
     def __str__(self):
@@ -149,20 +148,27 @@ class ManageRegulation(BaseModel):  # quanLyQuyDinh
     regulation_id = Column(Integer, ForeignKey(Regulations.id), nullable=False)
     content = Column(String(255), nullable=False)
 
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-
+        #
         # import hashlib
-        # password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
-        # u = User(name='Thanh', username='admin', password=password, user_role=UserRole.ADMIN,
+
+        # u = User(name='Nhung', gender=GenderRole.OTHER, address='DH babon', role=UserRole.CASHIER,\
+        #          CCCD="123452789",phone="35012581",
         #          avatar='https://res.cloudinary.com/dxxwcby8l/image/upload/v1646729569/fi9v6vdljyfmiltegh7k.jpg')
+        # #
         # db.session.add(u)
         # db.session.commit()
-
+        # u = User.query.get(1)
+        # password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
+        # staf = Staff(user_id=u.id, username="Nhung", password=password,salary = 3500001)
+        # db.session.add(staf)
+        # db.session.commit()
 
         # with open(f'data/medicine.json', encoding='utf-8') as f:
-        # #     datas = json.load(f)['result']['items']
+        #     # datas = json.load(f)['result']['items']
         #     datas = json.load(f)
         #     for item in datas:
         #         # if len(item['hoatChat']) < 255 and len(item['tenThuoc']) < 75 and len(item['donViTinh']) < 50:
@@ -171,11 +177,8 @@ if __name__ == '__main__':
         #         #                  price = item['giaBanBuon'],
         #         #                  content = item['hoatChat'])
         #         m = Medicine(name=item['name'],
-        #          unit=item['unit'],
-        #          price=item['price'],
-        #          content=item['content'])
+        #                      unit=item['unit'],
+        #                      price=item['price'],
+        #                      content=item['content'])
         #         db.session.add(m)
         #         db.session.commit()
-
-
-

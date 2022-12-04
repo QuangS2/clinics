@@ -1,17 +1,36 @@
-from appClinics.models import Medicine,User
+from appClinics.models import Medicine, User, Staff
 from appClinics import db
 from flask_login import current_user
 from sqlalchemy import func
+import hashlib
 import json
 
-emp_path = "data/medicine.json"
+
+# emp_path = "data/medicine.json"
 
 
 def load_medicine():
     return Medicine.query.all()
 
+
 def load_user_attributes():
-    return ["Usename","Password","Name","Gender","Address","Role","CCCD","Phone","Avatar", "Email"]
+    return ["Usename", "Password", "Name", "Gender", "Address", "Role", "CCCD", "Phone", "Avatar", "Email"]
+
+
+def auth_user(username, password):
+    password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+
+    staff = Staff.query.filter(Staff.username.__eq__(username.strip()),
+                               Staff.password.__eq__(password)).first()
+
+    if staff:
+        return User.query.get(staff.user_id)
+    return staff
+
+
+def get_user_by_id(user_id):
+    return User.query.get(user_id)
+
 
 # def load_f_json(file_path):
 #     if file_path is not None:
@@ -25,8 +44,9 @@ def load_user_attributes():
 
 
 if __name__ == '__main__':
-    fileme = []
+    # fileme = []
     from appClinics import app
+
     with app.app_context():
         # load_medicine()
         print(load_user_attributes())
@@ -39,4 +59,3 @@ if __name__ == '__main__':
         #     }
         #     fileme.append(e)
         #     save_f_json(fileme, emp_path)
-
