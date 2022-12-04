@@ -154,7 +154,7 @@ if __name__ == '__main__':
         db.create_all()
         #
         # import hashlib
-
+        #
         # u = User(name='Nhung', gender=GenderRole.OTHER, address='DH babon', role=UserRole.CASHIER,\
         #          CCCD="123452789",phone="35012581",
         #          avatar='https://res.cloudinary.com/dxxwcby8l/image/upload/v1646729569/fi9v6vdljyfmiltegh7k.jpg')
