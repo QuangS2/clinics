@@ -56,11 +56,14 @@ def register_appointment():
 
 
 
-
-
 @login.user_loader
 def load_user(user_id):
     return dao.get_user_by_id(user_id)
+
+
+@app.route("/clinic1")
+def clinic1():
+    return render_template('clinic1.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
