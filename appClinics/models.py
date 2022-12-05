@@ -50,7 +50,9 @@ class User(BaseModel, UserMixin):
     role = Column(Enum(UserRole), default=UserRole.PATIENT)
     CCCD = Column(String(12), nullable=False)
     phone = Column(String(12), nullable=False)
-    avatar = Column(String(100), default="https://res.cloudinary.com/dpwzlm56r/image/upload/v1668053235/fqgebe03qujrypsdcni5.jpg")
+    avatar = Column(String(100),
+                    default="https://res.cloudinary.com/dpwzlm56r/image/upload/v1668053235/fqgebe03qujrypsdcni5.jpg")
+    legit = Column(Boolean, default=True)
 
     def __str__(self):
         return self.name
@@ -156,15 +158,15 @@ if __name__ == '__main__':
         #
         import hashlib
 
-        # u = User(name='Nhung', gender=GenderRole.OTHER, birthday="2002/9/6",address='DH babon', role=UserRole.CASHIER,\
-        #          CCCD="123452789",phone="35012581")
+        # u = User(name='Lan', gender=GenderRole.MALE, birthday="2002/5/8",address='DH babon', role=UserRole.NURSE,\
+        #          CCCD="584715468",phone="545155454")
         #
         # db.session.add(u)
         # db.session.commit()
-        # u = User.query.filter(User.CCCD.__eq__("123452789")).first()
-        # # print(u.id)
+        # u = User.query.filter(User.CCCD.__eq__("584715468")).first()
+        # # # print(u.id)
         # password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
-        # staf = Staff(user_id=u.id, username="Nhung", password=password,salary = 3500001)
+        # staf = Staff(user_id=u.id, username="Lan", password=password,salary = 3500002)
         # db.session.add(staf)
         # db.session.commit()
 
@@ -182,4 +184,24 @@ if __name__ == '__main__':
         #                      price=item['price'],
         #                      content=item['content'])
         #         db.session.add(m)
+        #         db.session.commit()
+
+        #ADD STAFF
+        # with open(f'data/staff.json', encoding='utf-8') as f:
+        #     # datas = json.load(f)['result']['items']
+        #     datas = json.load(f)
+        #     for item in datas:
+        #         u = User(name=item['name'],
+        #                  gender=GenderRole[item['gender']],
+        #                  birthday=item['birthday'],
+        #                  address=item['address'],
+        #                  role=UserRole[item['role']],
+        #                  CCCD=item['CCCD'],
+        #                  phone=item['phone'])
+        #         db.session.add(u)
+        #         db.session.commit()
+        #         u = User.query.filter(User.CCCD.__eq__(item['CCCD'])).first()
+        #         password = str(hashlib.md5(item['password'].encode('utf-8')).hexdigest())
+        #         staf = Staff(user_id=u.id, username=item['username'], password=password, salary=item['salary'])
+        #         db.session.add(staf)
         #         db.session.commit()

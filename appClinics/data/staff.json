@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Nguyễn Thị Hồng Nhung",
+    "gender": "OTHER",
+    "birthday": "2002/9/6",
+    "address": "TP.HCM",
+    "role": "CASHIER",
+    "CCCD": "1234567890",
+    "phone": "0123456789",
+    "username": "Nhung",
+    "password": "123456",
+    "salary": 3000000
+  },
+  {
+    "name": "Nguyễn Ngọc Luân",
+    "gender": "MALE",
+    "birthday": "2002/3/2",
+    "address": "TP.HCM",
+    "role": "DOCTOR",
+    "CCCD": "1234857890",
+    "phone": "0123471149",
+    "username": "Luan",
+    "password": "123456",
+    "salary": 3000000
+  },
+  {
+    "name": "Nguyễn Hồng Ân",
+    "gender": "FEMALE",
+    "birthday": "2002/4/5",
+    "address": "TP.HCM",
+    "role": "NURSE",
+    "CCCD": "1235441140",
+    "phone": "0163321489",
+    "username": "An",
+    "password": "123456",
+    "salary": 3000000
+  },
+  {
+    "name": "Lê Anh Quang",
+    "gender": "MALE",
+    "birthday": "1997/12/4",
+    "address": "TP.HCM",
+    "role": "ADMIN",
+    "CCCD": "5522552224",
+    "phone": "01644587789",
+    "username": "Quang",
+    "password": "123456",
+    "salary": 3000000
+  }
+]

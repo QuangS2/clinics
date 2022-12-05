@@ -58,7 +58,8 @@ def get_user_by_id(user_id):
 # def save_f_json(json_list, file_path):
 #     with open(file_path, encoding="utf-8", mode="w") as f:
 #         json.dump(json_list, f, ensure_ascii=False, indent=True)
-
+def load_list_apm():
+    return Appointment.query.filter(Appointment.date.__eq__(None)).all()
 
 if __name__ == '__main__':
     # fileme = []
@@ -66,10 +67,13 @@ if __name__ == '__main__':
 
     with app.app_context():
         # load_medicine()
-        data = {
-            "gender":"MALE"
-        }
-        print(GenderRole[data['gender']])
+        # data = {
+        #     "gender":"MALE"
+        # }
+        # print(GenderRole[data['gender']].name)
+        listapm = load_list_apm()
+        for item in listapm:
+            print(item.patient_id)
         # print(load_user_attributes().items())
         # for m in load_categories():
         #     e = {
