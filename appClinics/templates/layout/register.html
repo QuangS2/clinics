@@ -1,26 +1,40 @@
-<div class="row form-row">
-    {% for attr in user_atb %}
-    <div class="form-floating mb-3 mt-3 col-sm-6">
-        {% if attr == 'Gender' %}
-        <form action="/action_page.php" class="d-flex p-3">
-            <div class="form-check col-sm-4">
-                <input type="radio" class="form-check-input" id="male" name="gender" value="option1" checked>
-                <label class="form-check-label" for="male">Nam</label>
+<div>
+    <h2 style="color : #0E8D68" > THÔNG TIN ĐĂNG KÝ KHÁM </h2>
+    <form method="post" action="/appointment" class="row form-row">
+        {% for key,value in user_atb.items() %}
+
+        {% if key == 'gender' %}
+        <div class="form-floating mb-3 mt-3 col-sm-6">
+            <div class="d-flex p-3">
+                <div class="form-check col-sm-4">
+                    <input type="radio" class="form-check-input" id="male" name={{key}} value="MALE" checked>
+                    <label class="form-check-label" for="male">Nam</label>
+                </div>
+                <div class="form-check col-sm-4">
+                    <input type="radio" class="form-check-input" id="female" name={{key}} value="FEMALE">
+                    <label class="form-check-label" for="female">Nữ</label>
+                </div>
+                <div class="form-check col-sm-4">
+                    <input type="radio" class="form-check-input" id="other" name={{key}} value="OTHER">
+                    <label class="form-check-label" for="other">Khác</label>
+                </div>
             </div>
-            <div class="form-check col-sm-4">
-                <input type="radio" class="form-check-input" id="female" name="gender" value="option2">
-                <label class="form-check-label" for="female">Nữ</label>
-            </div>
-            <div class="form-check col-sm-4">
-                <input type="radio" class="form-check-input" id="other" name="gender" value="option3">
-                <label class="form-check-label" for="other">Khác</label>
-            </div>
-        </form>
+        </div>
+        {% elif key == 'birthday' %}
+        <div class="mb-3 mt-3 col-sm-6">
+            <label for="birthday">{{value}} :</label>
+            <input type="date" id="birthday" name="birthday">
+        </div>
         {% else %}
-        <input type="text" class="form-control" id=user_{{attr}} placeholder="Enter email" name="email" required>
-        <label for=user_{{attr}}>{{attr}}</label>
+        <div class="form-floating mb-3 mt-3 col-sm-6">
+            <input type="text" class="form-control" id=user_{{key}} placeholder="Nhập {{value}}" name={{key}} required>
+            <label for=user_{{key}}>{{value}}</label>
+        </div>
         {% endif %}
 
-    </div>
-    {% endfor %}
+
+        {% endfor %}
+        <button type="submit" class="btn btn-primary col-sm-3">Submit</button>
+    </form>
+
 </div>

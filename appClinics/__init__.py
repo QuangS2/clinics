@@ -16,8 +16,11 @@ db = SQLAlchemy(app=app)
 
 login = LoginManager(app=app)
 
-# cloudinary.config(cloud_name='dxxwcby8l', api_key='448651448423589', api_secret='ftGud0r1TTqp0CGp5tjwNmkAm-A')
-
+cloudinary.config(
+  cloud_name = "dpwzlm56r",
+  api_key = "126952895863789",
+  api_secret = "NEAZeJjZq4dZDqAY_gp1f8YtfaY"
+)
 # babel = Babel(app=app)
 
 #

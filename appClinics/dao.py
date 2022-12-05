@@ -1,4 +1,4 @@
-from appClinics.models import Medicine, User, Staff
+from appClinics.models import Medicine, User, Staff, GenderRole, Appointment
 from appClinics import db
 from flask_login import current_user
 from sqlalchemy import func
@@ -14,9 +14,26 @@ def load_medicine():
 
 
 def load_user_attributes():
-    return ["Usename", "Password", "Name", "Gender", "Address", "Role", "CCCD", "Phone", "Avatar", "Email"]
+    return {
+        "name":"Họ và tên",
+        "gender" : "Giới tính",
+        "birthday":"Ngày sinh",
+        "address":"Địa chỉ",
+        "CCCD" : "CMND/CCCD",
+        "phone":"Số điện thoại"
+    }
+def add_data_user(data_user):
 
-
+    u = User(name=data_user['name'], gender=GenderRole[data_user['gender']], birthday=data_user['birthday'],\
+             address=data_user['address'], \
+             CCCD=data_user['CCCD'], phone=data_user['phone'])
+    db.session.add(u)
+    return    db.session.commit()
+def register_appointment(data_user):
+    u = User.query.filter(User.CCCD.__eq__(data_user['CCCD'])).first()
+    apm = Appointment(patient_id=u.id)
+    db.session.add(apm)
+    return db.session.commit()
 def auth_user(username, password):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
 
@@ -49,7 +66,11 @@ if __name__ == '__main__':
 
     with app.app_context():
         # load_medicine()
-        print(load_user_attributes())
+        data = {
+            "gender":"MALE"
+        }
+        print(GenderRole[data['gender']])
+        # print(load_user_attributes().items())
         # for m in load_categories():
         #     e = {
         #         "name": m.name,

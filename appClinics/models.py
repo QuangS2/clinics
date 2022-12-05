@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, Text, ForeignKey, Enum, DateTime
+from sqlalchemy import Column, Integer, String, Float, Boolean, Text, ForeignKey, Enum, DateTime, DATE
 from sqlalchemy.orm import relationship, backref
 from appClinics import db, app
 from enum import Enum as BaseEnum
@@ -45,11 +45,12 @@ class User(BaseModel, UserMixin):
 
     name = Column(String(50), nullable=False)
     gender = Column(Enum(GenderRole), default=GenderRole.MALE)
+    birthday = Column(DATE, nullable=False)
     address = Column(String(50), nullable=False)
     role = Column(Enum(UserRole), default=UserRole.PATIENT)
     CCCD = Column(String(12), nullable=False)
     phone = Column(String(12), nullable=False)
-    avatar = Column(String(100), nullable=False)
+    avatar = Column(String(100), default="https://res.cloudinary.com/dpwzlm56r/image/upload/v1668053235/fqgebe03qujrypsdcni5.jpg")
 
     def __str__(self):
         return self.name
@@ -81,8 +82,8 @@ class Clinics(BaseModel):  # phongkham
 class Appointment(BaseModel):  # lichkham
     __tablename__ = 'Appointment'
     patient_id = Column(Integer, ForeignKey(User.id), nullable=False)
-    nurse_id = Column(Integer, ForeignKey(User.id), nullable=False)
-    clinics_id = Column(Integer, ForeignKey(Clinics.id), nullable=False)
+    nurse_id = Column(Integer, ForeignKey(User.id), nullable=True)
+    clinics_id = Column(Integer, ForeignKey(Clinics.id), default=1)
     date = Column(DateTime, nullable=True)
 
 
@@ -153,19 +154,19 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         #
-        # import hashlib
+        import hashlib
 
-        # u = User(name='Nhung', gender=GenderRole.OTHER, address='DH babon', role=UserRole.CASHIER,\
-        #          CCCD="123452789",phone="35012581",
-        #          avatar='https://res.cloudinary.com/dxxwcby8l/image/upload/v1646729569/fi9v6vdljyfmiltegh7k.jpg')
-        # #
+        # u = User(name='Nhung', gender=GenderRole.OTHER, birthday="2002/9/6",address='DH babon', role=UserRole.CASHIER,\
+        #          CCCD="123452789",phone="35012581")
+        #
         # db.session.add(u)
         # db.session.commit()
-        # u = User.query.get(1)
-        # password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
-        # staf = Staff(user_id=u.id, username="Nhung", password=password,salary = 3500001)
-        # db.session.add(staf)
-        # db.session.commit()
+        u = User.query.filter(User.CCCD.__eq__("123452789")).first()
+        # print(u.id)
+        password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
+        staf = Staff(user_id=u.id, username="Nhung", password=password,salary = 3500001)
+        db.session.add(staf)
+        db.session.commit()
 
         # with open(f'data/medicine.json', encoding='utf-8') as f:
         #     # datas = json.load(f)['result']['items']

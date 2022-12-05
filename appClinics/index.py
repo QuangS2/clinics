@@ -39,6 +39,24 @@ def login_my_user():
 def logout_my_user():
     logout_user()
     return redirect('/login')
+@app.route('/appointment', methods=['post'])
+def register_appointment():
+    if request.method == 'POST':
+        user = {
+            'name' : request.form['name'],
+        'gender' : request.form['gender'],
+        'birthday' : request.form['birthday'],
+        'address' : request.form['address'],
+        'CCCD' : request.form['CCCD'],
+        'phone' : request.form['phone']
+        }
+        dao.add_data_user(user)
+        dao.register_appointment(user)
+    return  redirect("/appointment")
+
+
+
+
 
 @login.user_loader
 def load_user(user_id):
