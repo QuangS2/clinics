@@ -161,12 +161,12 @@ if __name__ == '__main__':
         #
         # db.session.add(u)
         # db.session.commit()
-        u = User.query.filter(User.CCCD.__eq__("123452789")).first()
-        # print(u.id)
-        password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
-        staf = Staff(user_id=u.id, username="Nhung", password=password,salary = 3500001)
-        db.session.add(staf)
-        db.session.commit()
+        # u = User.query.filter(User.CCCD.__eq__("123452789")).first()
+        # # print(u.id)
+        # password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
+        # staf = Staff(user_id=u.id, username="Nhung", password=password,salary = 3500001)
+        # db.session.add(staf)
+        # db.session.commit()
 
         # with open(f'data/medicine.json', encoding='utf-8') as f:
         #     # datas = json.load(f)['result']['items']
