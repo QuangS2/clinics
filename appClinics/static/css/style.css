@@ -107,4 +107,34 @@
       top: 10px;
     }
 
+  .clinic1-img img{
+    width: 100%;
+    height: 450px;
+}
 
+  .imgRow {
+    width: 100%;
+    display: block;
+}
+
+ .centerr{
+ text-align: center;
+ }
+
+  .imgRow-2.col-sm-4 img {
+  width: 50%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+p:hover{
+    color: red;
+}
+p:active{
+    color: Gray;
+}
