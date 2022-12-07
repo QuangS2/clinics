@@ -132,9 +132,60 @@
 }
 
 
-p:hover{
+e:hover{
     color: red;
 }
-p:active{
+e:active{
     color: Gray;
 }
+
+    .sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+    .Font {
+    color: #3eb8d7;
+    font-size: 18pt;
+    line-height: 30px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+    .Font-h2 {
+    font-size: 14pt;
+    font-family: 'Times New Roman';
+    color: #000000;
+    background-color: transparent;
+    font-weight: 400;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-position: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+    white-space: pre-wrap
+    }
+
+    .img-gE {
+    width: 110%;
+    }
+
+    .img2 {
+    width: 35%;
+    }
+
+    .Font-price {
+        font-size: 14pt;
+    }
+
+    .Fontt {
+    font-size: 20px;
+    }
+
+    .font-e {
+        cursor: pointer;
+    }
