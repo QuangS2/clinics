@@ -65,7 +65,12 @@ def register_appointment():
         dao.add_data_user(user)
         dao.register_appointment(user)
     return  redirect("/appointment")
-
+@app.route('/listapm', methods=['post'])
+def fx():
+    for user_id in request.form.getlist('data_fake'):
+        dao.reverse_legit_user(user_id)
+    # print(request.form['data_fake'])
+    return redirect("/listapm")
 
 
 @login.user_loader
