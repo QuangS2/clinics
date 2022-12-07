@@ -186,3 +186,6 @@ e:active{
     font-size: 20px;
     }
 
+    .font-e {
+        cursor: pointer;
+    }

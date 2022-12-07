@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect
 from appClinics import app, dao, login
 from flask_login import login_user, logout_user
-from appClinics.decorator import annonynous_user
+from appClinics.decorator import annonynous_user, nurse_user
 
 @app.route("/")
 def index():
@@ -16,6 +16,18 @@ def index():
 def appointment():
     user_atb = dao.load_user_attributes()
     return render_template('appointment.html', user_atb=user_atb)
+@app.route("/listapm")
+@nurse_user
+def list_apm():
+    list = dao.load_list_apm()
+    users =[]
+    user_atb = dao.load_user_attributes()
+    for item in list:
+        users.append(dao.get_user_by_id(item.patient_id))
+    return render_template('listapm.html', list = list, users = users, user_atb=user_atb)
+
+
+
 
 @app.route("/login")
 @annonynous_user
