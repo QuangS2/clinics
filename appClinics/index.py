@@ -61,9 +61,13 @@ def load_user(user_id):
     return dao.get_user_by_id(user_id)
 
 
-@app.route("/clinic1")
-def clinic1():
-    return render_template('clinic1.html')
+@app.route("/generalExamination")
+def generalExamination():
+    return render_template('generalExamination.html')
+
+@app.route("/price")
+def price():
+    return render_template('price.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
