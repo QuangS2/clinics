@@ -83,9 +83,10 @@ if __name__ == '__main__':
         # for item in listapm:
         #     print(item.patient_id)
         # dis_legit_user(9)
-        # u = get_user_by_id(8)
+        u = get_user_by_id(8)
         # print(u.legit)
-        print(datetime.date.today())
+        print(u.birthday.year)
+        # datetime.date.year
         # print(load_user_attributes().items())
         # for m in load_categories():
         #     e = {

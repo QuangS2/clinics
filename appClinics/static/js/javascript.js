@@ -24,3 +24,9 @@ function formatDate(date) {
 
     return [year, month, day].join('-');
 }
+function date_choosen(){
+    return new Date (document.getElementById('date_apm').value).toLocaleDateString('en-GB');
+}
+function set_modal_date(){
+    document.getElementById('modal-date').innerHTML  = 'Ngày khám: ' + date_choosen();
+}
