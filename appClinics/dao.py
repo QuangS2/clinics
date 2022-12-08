@@ -1,3 +1,5 @@
+import datetime
+
 from appClinics.models import Medicine, User, Staff, GenderRole, Appointment
 from appClinics import db
 from flask_login import current_user
@@ -83,7 +85,7 @@ if __name__ == '__main__':
         # dis_legit_user(9)
         # u = get_user_by_id(8)
         # print(u.legit)
-        print(not True)
+        print(datetime.date.today())
         # print(load_user_attributes().items())
         # for m in load_categories():
         #     e = {

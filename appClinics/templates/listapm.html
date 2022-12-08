@@ -2,6 +2,16 @@
 
 {% block content %}
 <div class="table-responsive">
+    <form action="" class="mb-3 mt-3">
+
+        <div class=" ">
+
+            <label for="date_apm"> Ngày khám :</label>
+            <input type="date" id="date_apm" name="birthday" value={{date}}>
+            <button type="button" class="btn btn-sm btn-primary rounded-pill">Tạo danh sách khám</button>
+        </div>
+
+    </form>
     <form action="/listapm" method="post">
         <table class="table table-bordered">
             <thead>
@@ -28,7 +38,7 @@
                 <td>{{user['CCCD']}}</td>
                 <td>{{user['phone']}}</td>
                 <td>
-                    <input type="checkbox" class="form-check-input mx-auto "  name="data_fake"}
+                    <input type="checkbox" class="form-check-input mx-auto " name="data_fake" }
                            value={{user['id']}}>
                 </td>
             </tr>
@@ -36,12 +46,12 @@
             {% endfor %}
             </tbody>
         </table>
-<!--        <button type="submit" class="btn btn-primary float-end rounded-pill">Tạo danh sách</button>-->
+        <!--        <button type="submit" class="btn btn-primary float-end rounded-pill">Tạo danh sách</button>-->
 
 
-    <button type="button"  onclick="ab()" class="btn btn-info">Danh sách thông tin nghi vấn</button>
+        <button type="button" onclick="ab()" class="btn btn-info">Danh sách thông tin nghi vấn</button>
 
-        <table class="table table-bordered" id = "tb-non-legit">
+        <table class="table table-bordered" id="tb-non-legit" style="display:none">
             <thead>
             <tr>
                 <!--          <th>#</th>-->
@@ -51,7 +61,7 @@
                 <th>{{user_atb['address']}}</th>
                 <th>{{user_atb['CCCD']}}</th>
                 <th>{{user_atb['phone']}}</th>
-                <th>Thông tin giả</th>
+                <th>Xác nhận</th>
             </tr>
             </thead>
             <tbody>
@@ -66,7 +76,7 @@
                 <td>{{user['CCCD']}}</td>
                 <td>{{user['phone']}}</td>
                 <td>
-                    <input type="checkbox" class="form-check-input mx-auto "  name="data_fake"}
+                    <input type="checkbox" class="form-check-input mx-auto " name="data_fake" }
                            value={{user['id']}}>
                 </td>
             </tr>
@@ -74,7 +84,10 @@
             {% endfor %}
             </tbody>
         </table>
-        <button type="submit" class="btn btn-primary float-end rounded-pill">Cập nhật danh sách</button>
+        <!--        <button type="button" class="btn btn-primary float-end rounded-pill">Tạo danh sách khám</button>-->
+        <button type="submit" class="btn btn-secondary float-end rounded-pill">Cập nhật danh sách</button>
+
     </form>
+
 </div>
 {% endblock %}

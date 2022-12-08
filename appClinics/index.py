@@ -1,3 +1,5 @@
+import datetime
+
 from flask import render_template, request, redirect
 from appClinics import app, dao, login
 from flask_login import login_user, logout_user
@@ -12,23 +14,8 @@ def index():
     return render_template('index.html', categories=categories, products=products)
 
 
-@app.route("/appointment")
-def appointment():
-    user_atb = dao.load_user_attributes()
-    return render_template('appointment.html', user_atb=user_atb)
-@app.route("/listapm")
-@nurse_user
-def list_apm():
-    list = dao.load_list_apm()
-    users =[]
-    user_atb = dao.load_user_attributes()
-    for item in list:
-        users.append(dao.get_user_by_id(item.patient_id))
-    return render_template('listapm.html', list = list, users = users, user_atb=user_atb)
 
-
-
-
+#login logout
 @app.route("/login")
 @annonynous_user
 def login_page():
@@ -51,6 +38,15 @@ def login_my_user():
 def logout_my_user():
     logout_user()
     return redirect('/login')
+
+
+#appoinment dk kham
+@app.route("/appointment")
+def appointment():
+    user_atb = dao.load_user_attributes()
+    return render_template('appointment.html', user_atb=user_atb)
+
+
 @app.route('/appointment', methods=['post'])
 def register_appointment():
     if request.method == 'POST':
@@ -65,6 +61,23 @@ def register_appointment():
         dao.add_data_user(user)
         dao.register_appointment(user)
     return  redirect("/appointment")
+
+
+
+#listapm danh sach dky kham
+@app.route("/listapm")
+@nurse_user
+def list_apm():
+    list = dao.load_list_apm()
+    users =[]
+    user_atb = dao.load_user_attributes()
+    date = datetime.date.today()
+    for item in list:
+        users.append(dao.get_user_by_id(item.patient_id))
+    return render_template('listapm.html', list = list, users = users, user_atb=user_atb,\
+                           date=date)
+
+
 @app.route('/listapm', methods=['post'])
 def fx():
     for user_id in request.form.getlist('data_fake'):
