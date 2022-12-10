@@ -3,15 +3,16 @@ import datetime
 from flask import render_template, request, redirect
 from appClinics import app, dao, login
 from flask_login import login_user, logout_user
-from appClinics.decorator import annonynous_user, nurse_user
+from appClinics.decorator import annonynous_user, nurse_user, doctor_user
 
 @app.route("/")
 def index():
     # categories = dao.load_categories()
     # products = dao.load_products(category_id=request.args.get('category_id'))
-    categories = 3
-    products = 4
-    return render_template('index.html', categories=categories, products=products)
+    # if dao.current_user.is_authenticated:
+    #     if dao.current_user.role == dao.UserRole.NURSE:
+    #         return redirect('/nurse')
+    return render_template('index.html')
 
 
 
@@ -64,27 +65,41 @@ def register_appointment():
 
 
 
-#listapm danh sach dky kham
-@app.route("/listapm")
+#apms
+@app.route("/apms")
 @nurse_user
-def list_apm():
+def apms():
     list = dao.load_list_apm()
-    users =[]
+    users = []
     user_atb = dao.load_user_attributes()
     date = datetime.date.today()
     for item in list:
         users.append(dao.get_user_by_id(item.patient_id))
-    return render_template('listapm.html', list = list, users = users, user_atb=user_atb,\
-                           date=date)
+    return render_template('nurse.html', list=list, users=users, user_atb=user_atb, \
+                           date=date, site = 'apms')
 
 
-@app.route('/listapm', methods=['post'])
-def fx():
+@app.route('/apms', methods=['post'])
+def update_legit():
     for user_id in request.form.getlist('data_fake'):
         dao.reverse_legit_user(user_id)
     # print(request.form['data_fake'])
-    return redirect("/listapm")
+    return redirect("/apms")
 
+
+@app.route('/apms/create', methods=['post'])
+def set_date_apm():
+    date = request.form.getlist('date_apm')
+    amount = request.form.getlist('patient_amount')
+    dao.set_apm(date,int(amount[0]))
+    # print(date,int(amount[0]))
+    return redirect("/apms")
+#doctor
+#medicalrp
+@app.route("/medicalrp")
+@doctor_user
+def medicalrp():
+    return render_template('doctor.html', site = 'medicalrp')
 
 @login.user_loader
 def load_user(user_id):

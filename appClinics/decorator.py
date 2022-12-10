@@ -23,3 +23,11 @@ def nurse_user(f):
             return f(*args, **kwargs)
         return redirect('/')
     return nurse_func
+def doctor_user(f):
+    @wraps(f)
+    def nurse_func(*args, **kwargs):
+        if current_user.is_authenticated \
+                and current_user.role == UserRole.DOCTOR:
+            return f(*args, **kwargs)
+        return redirect('/')
+    return nurse_func
