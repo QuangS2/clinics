@@ -1,3 +1,5 @@
+import datetime
+
 from appClinics.models import Medicine, User, Staff, GenderRole, Appointment
 from appClinics import db
 from flask_login import current_user
@@ -50,6 +52,12 @@ def auth_user(username, password):
 def get_user_by_id(user_id):
     return User.query.get(user_id)
 
+def reverse_legit_user(user_id):
+    user = get_user_by_id(user_id);
+    user.legit = not user.legit
+    db.session.add(user)
+    return db.session.commit()
+
 
 # def load_f_json(file_path):
 #     if file_path is not None:
@@ -73,9 +81,14 @@ if __name__ == '__main__':
         #     "gender":"MALE"
         # }
         # print(GenderRole[data['gender']].name)
-        listapm = load_list_apm()
-        for item in listapm:
-            print(item.patient_id)
+        # listapm = load_list_apm()
+        # for item in listapm:
+        #     print(item.patient_id)
+        # dis_legit_user(9)
+        u = get_user_by_id(8)
+        # print(u.legit)
+        print(u.birthday.year)
+        # datetime.date.year
         # print(load_user_attributes().items())
         # for m in load_categories():
         #     e = {

@@ -1,4 +1,7 @@
-from flask import render_template, request, redirect, url_for
+import datetime
+
+from flask import render_template, request, redirect
+
 from appClinics import app, dao, login
 from flask_login import login_user, logout_user
 from appClinics.decorator import annonynous_user, nurse_user
@@ -10,6 +13,7 @@ def index():
     categories = 3
     products = 4
     return render_template('index.html', categories=categories, products=products)
+
 
 
 @app.route("/appointment")
@@ -32,8 +36,7 @@ def list_apm():
     return render_template('listapm.html', list = list, users = users, user_atb=user_atb)
 
 
-
-
+#login logout
 @app.route("/login")
 @annonynous_user
 def login_page():
@@ -56,6 +59,12 @@ def login_my_user():
 def logout_my_user():
     logout_user()
     return redirect('/login')
+
+
+#appoinment dk kham
+
+
+
 @app.route('/appointment', methods=['post'])
 def register_appointment():
     if request.method == 'POST':
@@ -77,13 +86,14 @@ def register_appointment():
         except Exception as ex:
             print(ex)
             fail = False        #xử lý sai
-            return redirect(url_for('appointment', fail=fail))      #xử lý sai
+            return redirect('appointment', fail=fail)      #xử lý sai
 
-    return redirect( url_for('appointment', success = success))     #xử lý đúng
-
-
+    return redirect( 'appointment', success = success)    #xử lý đúng
 
 
+
+
+#listapm danh sach dky kham
 @login.user_loader
 def load_user(user_id):
     return dao.get_user_by_id(user_id)
