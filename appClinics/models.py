@@ -155,9 +155,9 @@ class ManageRegulation(BaseModel):  # quanLyQuyDinh
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        #
-        import hashlib
 
+        # import hashlib
+        #
         # u = User(name='Lan', gender=GenderRole.MALE, birthday="2002/5/8",address='DH babon', role=UserRole.NURSE,\
         #          CCCD="584715468",phone="545155454")
         #
@@ -169,7 +169,7 @@ if __name__ == '__main__':
         # staf = Staff(user_id=u.id, username="Lan", password=password,salary = 3500002)
         # db.session.add(staf)
         # db.session.commit()
-
+        #
         # with open(f'data/medicine.json', encoding='utf-8') as f:
         #     # datas = json.load(f)['result']['items']
         #     datas = json.load(f)

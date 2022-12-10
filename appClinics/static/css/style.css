@@ -189,3 +189,13 @@ e:active{
     .font-e {
         cursor: pointer;
     }
+    .table-bordered{
+    border:2px solid black!important;
+    margin-top:20px;
+    }
+    .table-bordered > thead > tr > th{
+    border:2px solid black!important;
+    }
+    .table-bordered > tbody > tr > td{
+    border:2px solid black!important;
+    }

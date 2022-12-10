@@ -26,6 +26,7 @@ def load_user_attributes():
     }
 
 
+
 def add_data_user(data_user):
     u = User(name=data_user['name'], gender=GenderRole[data_user['gender']], birthday=data_user['birthday'], \
              address=data_user['address'], \
