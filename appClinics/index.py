@@ -1,8 +1,8 @@
 import datetime
 
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, jsonify
 
-from appClinics import app, dao, login
+from appClinics import app, dao, login, utils
 from flask_login import login_user, logout_user
 from appClinics.decorator import annonynous_user, nurse_user, doctor_user
 
@@ -87,7 +87,7 @@ def appointment():
 @app.route("/apms")
 @nurse_user
 def apms():
-    list = dao.load_list_apm()
+    list = dao.load_list_apm(None)
     users = []
     user_atb = dao.load_user_attributes()
     date = datetime.date.today()
@@ -120,7 +120,17 @@ def medicalrp():
     return render_template('doctor.html', site = 'medicalrp')
 
 
-#listapm danh sach dky kham
+@app.route("/api/users/<string:kw>")
+#js api to repl json
+def get_apm(kw): # come to apm or user to  get user data
+    users = dao.get_apm_user(kw)
+    # print(users)
+    jsonUsers =[]
+    for u in users:
+        jsonUsers.append(utils.jsonUser(u))
+
+    return jsonify(jsonUsers)
+
 @login.user_loader
 def load_user(user_id):
     return dao.get_user_by_id(user_id)
