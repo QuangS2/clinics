@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 from appClinics import app, dao, login
 from flask_login import login_user, logout_user
 from appClinics.decorator import annonynous_user, nurse_user
@@ -14,8 +14,13 @@ def index():
 
 @app.route("/appointment")
 def appointment():
+    u = request.args.get('success')         #xử lý đúng
+    u2 =  request.args.get('fail')          #xử lý sai
+    print("bien trang thai", u)
+
+
     user_atb = dao.load_user_attributes()
-    return render_template('appointment.html', user_atb=user_atb)
+    return render_template('appointment.html', user_atb=user_atb, success = u, fail = u2)
 @app.route("/listapm")
 @nurse_user
 def list_apm():
@@ -54,17 +59,28 @@ def logout_my_user():
 @app.route('/appointment', methods=['post'])
 def register_appointment():
     if request.method == 'POST':
-        user = {
-            'name' : request.form['name'],
-        'gender' : request.form['gender'],
-        'birthday' : request.form['birthday'],
-        'address' : request.form['address'],
-        'CCCD' : request.form['CCCD'],
-        'phone' : request.form['phone']
-        }
-        dao.add_data_user(user)
-        dao.register_appointment(user)
-    return  redirect("/appointment")
+        try:
+            success = None          #xử lý đúng
+            fail = None             #xử lý sai
+            user = {
+                'name' : request.form['name'],
+            'gender' : request.form['gender'],
+            'birthday' : request.form['birthday'],
+            'address' : request.form['address'],
+            'CCCD' : request.form['CCCD'],
+            'phone' : request.form['phone']
+            }
+            dao.add_data_user(user)
+            dao.register_appointment(user)
+
+            success = True      #xử lý đúng
+        except Exception as ex:
+            print(ex)
+            fail = False        #xử lý sai
+            return redirect(url_for('appointment', fail=fail))      #xử lý sai
+
+    return redirect( url_for('appointment', success = success))     #xử lý đúng
+
 
 
 

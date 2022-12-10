@@ -1,40 +1,44 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-<div class="table-responsive">
-    <form action="">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <!--          <th>#</th>-->
-                <th>{{user_atb['name']}}</th>
-                <th>{{user_atb['birthday']}}</th>
-                <th>{{user_atb['gender']}}</th>
-                <th>{{user_atb['address']}}</th>
-                <th>{{user_atb['CCCD']}}</th>
-                <th>{{user_atb['phone']}}</th>
-                <th>Thông tin giả</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for user in users %}
-            <tr>
-                <!--          <td>1</td>-->
-                <td>{{user['name']}}</td>
-                <td>{{user['birthday']}}</td>
-                <td>{{user['gender'].name}}</td>
-                <td>{{user['address']}}</td>
-                <td>{{user['CCCD']}}</td>
-                <td>{{user['phone']}}</td>
-                <td>
-                    <input type="checkbox" class="form-check-input mx-auto " id="check2" name="data_fake"}
-                           value={{user['id']}}>
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <button type="submit" class="btn btn-primary float-end rounded-pill">Tạo danh sách</button>
-    </form>
+<br>
+<div class="container-fluid ">
+    <div class="table-responsive ">
+        <form action="">
+            <table class="table table-bordered ">
+                <thead>
+                <tr>
+                    <!--          <th>#</th>-->
+                    <th class="text-center">{{user_atb['name']}}</th>
+                    <th class="text-center">{{user_atb['birthday']}}</th>
+                    <th class="text-center">{{user_atb['gender']}}</th>
+                    <th class="text-center">{{user_atb['address']}}</th>
+                    <th class="text-center">{{user_atb['CCCD']}}</th>
+                    <th class="text-center">{{user_atb['phone']}}</th>
+                    <th class="text-center">Thông tin giả</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                <tr>
+                    <!--          <td>1</td>-->
+                    <td class="text-center">{{user['name']}}</td>
+                    <td class="text-center">{{user['birthday']}}</td>
+                    <td class="text-center">{{user['gender'].name}}</td>
+                    <td class="text-center">{{user['address']}}</td>
+                    <td class="text-center">{{user['CCCD']}}</td>
+                    <td class="text-center">{{user['phone']}}</td>
+                    <td align="center">
+                        <input type="checkbox" class="form-check-input mx-auto " id="check2" name="data_fake" }
+                               value={{user['id']}}>
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary float-end rounded-pill">Tạo danh sách</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

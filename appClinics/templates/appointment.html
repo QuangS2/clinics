@@ -1,5 +1,21 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-    {% include 'layout/register.html' %}
+{% include 'layout/register.html' %}
+<div class="mt-5 ">
+    {% if success %}
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Đã đăng kí thành công!</strong>
+    </div>
+    {% endif %}
+
+    {% if success == False %}
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Đã đăng kí thất bại!</strong>
+    </div>
+    {% endif %}
+</div>
+
 {% endblock %}

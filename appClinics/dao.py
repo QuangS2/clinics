@@ -24,11 +24,13 @@ def load_user_attributes():
     }
 def add_data_user(data_user):
 
-    u = User(name=data_user['name'], gender=GenderRole[data_user['gender']], birthday=data_user['birthday'],\
-             address=data_user['address'], \
-             CCCD=data_user['CCCD'], phone=data_user['phone'])
-    db.session.add(u)
-    return    db.session.commit()
+        u = User(name=data_user['name'], gender=GenderRole[data_user['gender']], birthday=data_user['birthday'],\
+                 address=data_user['address'], \
+                 CCCD=data_user['CCCD'], phone=data_user['phone'])
+        db.session.add(u)
+        return    db.session.commit()
+
+
 def register_appointment(data_user):
     u = User.query.filter(User.CCCD.__eq__(data_user['CCCD'])).first()
     apm = Appointment(patient_id=u.id)
