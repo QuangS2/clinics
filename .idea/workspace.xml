@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3503a5dc-2f82-4373-8c6d-effad9aed82f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/appClinics/templates/price.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/clinics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/clinics.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appClinics/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/appClinics/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appClinics/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/appClinics/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appClinics/templates/clinic1.html" beforeDir="false" afterPath="$PROJECT_DIR$/appClinics/templates/generalExamination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appClinics/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/appClinics/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appClinics/templates/layout/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/appClinics/templates/layout/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appClinics/templates/layout/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/appClinics/templates/layout/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

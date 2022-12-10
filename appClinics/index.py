@@ -16,7 +16,7 @@ def index():
 def appointment():
     u = request.args.get('success')         #xử lý đúng
     u2 =  request.args.get('fail')          #xử lý sai
-    print("bien trang thai", u)
+    # print("bien trang thai", u)
 
 
     user_atb = dao.load_user_attributes()
