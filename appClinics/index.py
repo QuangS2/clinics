@@ -118,19 +118,42 @@ def set_date_apm():
 @doctor_user
 def medicalrp():
     return render_template('doctor.html', site = 'medicalrp')
+@app.route("/medicine")
+@doctor_user
+def medicine():
+    return render_template('doctor.html', site = 'medicine')
 
 
-@app.route("/api/users/<string:kw>")
+@app.route("/api/patient/<string:kw>")
 #js api to repl json
-def get_apm(kw): # come to apm or user to  get user data
-    users = dao.get_apm_user(kw)
+def get_patients(kw): # come to apm or user to  get user data
+    patients = dao.get_apm_user(kw)
     # print(users)
-    jsonUsers =[]
-    for u in users:
-        jsonUsers.append(utils.jsonUser(u))
+    patientsJson =[]
+    for p in patients:
+        patientsJson.append({
+            "user_id" : p.id,
+            "apm_id": dao.get_apm_date(p.id,datetime.date.today()).id,
+            "user_data": utils.jsonUser(dao.get_user_by_id(p.id))
+        })
 
-    return jsonify(jsonUsers)
+    return jsonify(patientsJson)
+@app.route("/api/user/<int:id>")
+def get_user(id):
+    return jsonify(utils.jsonUser(dao.get_user_by_id(id)))
 
+#medicine
+@app.route("/api/medicine/<string:kw>")
+def get_medicine_by_kw(kw):
+    medicines = dao.get_medicine_by_kw(kw)
+    rsJson = []
+    for m in medicines:
+        rsJson.append({
+            "name" : m.name,
+            "unit" : m.unit,
+            "price": m.price
+        })
+    return jsonify(rsJson)
 @login.user_loader
 def load_user(user_id):
     return dao.get_user_by_id(user_id)

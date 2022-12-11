@@ -1,8 +1,39 @@
-<div class=" d-flex p-3 justify-content-center">
-    <input type="text" class="form-control col-sm-4" placeholder="Nhập mã đăng ký khám..." id="kw-rp">
-    <button type="button" class="btn btn-info" onclick="getUser()">Tìm kiếm</button>
+<div class="search-area">
+    <div class=" d-flex p-3 justify-content-center">
+        <input type="text" class="form-control col-sm-4" placeholder="Nhập mã đăng ký khám..." id="kw-rp">
+        <button type="button" class="btn btn-info" onclick="getPatients()">Tìm kiếm</button>
+    </div>
+    <div class=" d-flex justify-content-center" id="search-rs">
+    </div>
 </div>
-<div class=" d-flex justify-content-center" id="search-rs">
+<div class="report-area">
+    <div class="container p-3 row">
+        <div class="d-flex justify-content-center border border-dark"> PHIẾU KHÁM BỆNH</div>
+        <div class="border border-dark col-sm-6 p-3">Họ tên:</div>
+        <div class="border border-dark col-sm-6 p-3">Ngày khám:</div>
+        <div class="border border-dark col-sm-6 p-3">
+            <label for="hint">Triệu chứng</label>
+            <input type="text" class="form-control" id="hint">
+        </div>
+        <div class="border border-dark col-sm-6 p-3">
+            <label for="guess">Dự đoán: </label>
+            <input type="text" class="form-control" id="guess">
+        </div>
+        <table class="table medical table-bordered">
+            <thead>
+            <tr>
+                <!--          <th>#</th>-->
+                <th>STT</th>
+                <th>Thuốc</th>
+                <th>Đơn vị</th>
+                <th>Số lượng</th>
+                <th>Cách dùng</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
 
-
+        <button type="button" class="btn btn-info col-sm-3">Thêm đơn thuốc</button>
+    </div>
 </div>

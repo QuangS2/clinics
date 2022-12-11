@@ -3,12 +3,11 @@ import datetime
 from appClinics.models import Medicine, User, Staff, GenderRole, Appointment, UserRole
 from appClinics import db
 from flask_login import current_user, utils
-from sqlalchemy import func
+from sqlalchemy import func, or_
 import hashlib
 import json
 
-
-# emp_path = "data/medicine.json"
+emp_path = "data/medicine.json"
 
 
 def load_medicine():
@@ -64,19 +63,18 @@ def reverse_legit_user(user_id):
 # apm
 def get_apm_user(kw):
     apms = load_list_apm(datetime.date.today())
-    users = []
+    patients = []
     if kw == "ALL": kw = ""
     if kw.isdigit():
-        for apm in apms:
-            if apm.id == int(kw):
-                users.append(get_user_by_id(apm.patient_id))
-                break
+        apm = Appointment.query.filter(Appointment.id.__eq__(int(kw))).first();
+        patients.append(get_user_by_id(apm.patient_id))
+
     else:
         for apm in apms:
             u = get_user_by_id(apm.patient_id)
             if kw.lower() in u.name.lower():
-                users.append(u)
-    return users
+                patients.append(u)
+    return patients
 
 
 def get_apm_legit():
@@ -87,6 +85,11 @@ def get_apm_legit():
         if u.legit == True:
             apms_legit.append(apm)
     return apms_legit
+
+
+def get_apm_date(user_id, date):
+    return Appointment.query.filter(Appointment.patient_id.__eq__(int(user_id)),
+                                    Appointment.date.__eq__(date)).first()
 
 
 def set_apm(date, amount):
@@ -113,12 +116,20 @@ def register_appointment(data_user):
     return db.session.commit()
 
 
+# medicine
+def get_medicine_by_kw(kw):
+    if kw == "ALL": kw = ""
+    return Medicine.query.filter(or_(Medicine.name.like('%' + kw + '%'),
+                                     Medicine.content.like('%' + kw + '%')
+                                     )).all()
+
+
 if __name__ == '__main__':
     # fileme = []
     from appClinics import app
 
     with app.app_context():
-        # load_medicine()
+        load_medicine()
         # data = {
         #     "gender":"MALE"
         # }
@@ -133,14 +144,8 @@ if __name__ == '__main__':
         # datetime.date.year
         # print(load_user_attributes().items())
         # print(get_apm_legit())
-        print(get_apm_user(""))
-        # print(datetime.date.today().year)
-        # for m in load_categories():
-        #     e = {
-        #         "name": m.name,
-        #         "content": m.content,
-        #         "unit": m.unit,
-        #         "price": m.price
-        #     }
-        #     fileme.append(e)
-        #     save_f_json(fileme, emp_path)
+        # print(get_apm_user("2"))
+        # print(get_apm_date("5",datetime.date.today()))
+        # print(datetime.date.today())
+
+        print(get_medicine_by_kw("ALL"))

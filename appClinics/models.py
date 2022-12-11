@@ -170,6 +170,8 @@ if __name__ == '__main__':
         # db.session.add(staf)
         # db.session.commit()
         #
+
+        #ADD_MEDICINE
         # with open(f'data/medicine.json', encoding='utf-8') as f:
         #     # datas = json.load(f)['result']['items']
         #     datas = json.load(f)

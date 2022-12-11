@@ -2,20 +2,21 @@
 //    console.log("A");
 //    $("#tb-non-legit").css("display","none");
 //});
-function getUser() { // => list result
+function getPatients() { // => list result
     let kw = document.getElementById('kw-rp').value;
 
     if(!kw) kw = "ALL"
-    fetch(`/api/users/${kw}`, {
+    fetch(`/api/patient/${kw}`, {
         method: "get"
     })
-    .then(res => res.json()).then((data) => {
-        console.info(data)
-        let i = 0, len = data.length;
+    .then(res => res.json()).then((patients) => {
+        console.info(patients)
+        let i = 0, len = patients.length;
         e = document.getElementById('search-rs');
         if(len==0){
             e.innerHTML = '<i>Không tìm thầy kết quả</i>' ;
-        }else
+        }
+        else
         {
             e.innerHTML = `<table class="table table-bordered table-hover">
         <thead>
@@ -38,19 +39,31 @@ function getUser() { // => list result
 
         while(i<len)
         {
-            e.innerHTML += `<tr onclick= "testrun()">
-                <td>${data[i].name}</td>
-                <td>${data[i].birthday}</td>
-                <td>${data[i].gender}</td>
-                <td>${data[i].address}</td>
-                <td>${data[i].CCCD}</td>
-                <td>${data[i].phone}</td>
+            e.innerHTML += `<tr onclick= "testrun(${patients[i].apm_id})">
+                <td>${patients[i].user_data.name}</td>
+                <td>${patients[i].user_data.birthday}</td>
+                <td>${patients[i].user_data.gender}</td>
+                <td>${patients[i].user_data.address}</td>
+                <td>${patients[i].user_data.CCCD}</td>
+                <td>${patients[i].user_data.phone}</td>
             </tr>`
+
             i++;
         }
     }) // promise
 }
+function getMedicine(){
+    let kw = document.getElementById('kw-medicine').value;
+    if (!kw) kw = "ALL"
+    fetch(`/api/medicine/${kw}`, {
+        method: "get"
+    }).then(res => res.json()).then((medicines) => {
+//        console.info(medicines)
+        let i = 0, len = medicines.length;
+        e = document.getElementById('search-rs');
 
+        })
+}
 function legitbtn(){
     let elm = document.getElementById('tb-non-legit');
     if(elm.style.display == "none")
@@ -77,6 +90,11 @@ function date_choosen(){
 function set_modal_date(){
     document.getElementById('modal-date').innerHTML  = 'Ngày khám: ' + date_choosen();
 }
-function testrun(){
-    console.log("run");
+function testrun(i){
+    console.log(i);
+}
+function getUserById(user_id){
+     fetch(`/api/apm/${apm_id}`, {
+        method: "get"
+    })
 }
