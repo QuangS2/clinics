@@ -1,6 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+   <p><strong>{{user_success}}</strong></p>
     <form method="post" action="/login">
   <div class="mb-3 mt-3">
     <label for="username" class="form-label">Username:</label>
@@ -17,4 +18,11 @@
   </div>
   <button type="submit" class="btn btn-primary">Log in</button>
 </form>
+<br>
+  {% if check == False %}
+  <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Đăng nhập thất bại!</strong>
+    </div>
+  {% endif %}
 {% endblock %}
