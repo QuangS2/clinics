@@ -26,7 +26,11 @@ def login_page():
 
 @app.route('/login', methods=['post'])
 def login_my_user():
+
+    check = False
     if request.method == 'POST':
+
+
         username = request.form['username']
         password = request.form['password']
 
@@ -34,9 +38,9 @@ def login_my_user():
         if user:
             login_user(user=user)
             n = request.args.get('next')
-            return redirect(n if n else '/')
+            return redirect(n if n else '/',)
 
-    return render_template('login.html')
+    return render_template('login.html', check = check)
 @app.route('/logout')
 def logout_my_user():
     logout_user()

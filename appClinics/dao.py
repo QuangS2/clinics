@@ -36,13 +36,16 @@ def add_data_user(data_user):
 
 
 def auth_user(username, password):
+
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
 
     staff = Staff.query.filter(Staff.username.__eq__(username.strip()),
                                Staff.password.__eq__(password)).first()
 
     if staff:
+        user_success = True
         return User.query.get(staff.user_id)
+
     return staff
 
 
