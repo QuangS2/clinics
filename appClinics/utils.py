@@ -7,3 +7,15 @@ def jsonUser(user):
         "CCCD":user.CCCD,
         "phone":user.phone
     }
+def Prescribe(prescribe):
+    return {
+        "id":prescribe.id,
+        "userManual": prescribe.userManual,
+        "amount": prescribe.amount
+    }
+def Medicine(medicine):
+    return {
+            "id": medicine.id,
+            "name": medicine.name,
+            "unit":medicine.unit
+    }

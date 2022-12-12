@@ -23,23 +23,25 @@
                         <a class="nav-link active" href="price">Bảng giá</a>
                     </li>
 
-
+                    {% if not current_user.is_authenticated or current_user.role.name == 'NURSE'%}
                     <li class="nav-item">
                         <a class="nav-link active" href="appointment">Đăng ký khám</a>
                     </li>
+                    {% endif%}
                     {% if current_user.is_authenticated %}
-                    {% if current_user.role.name == 'NURSE' %}
+                        {% if current_user.role.name == 'NURSE' %}
                     <li class="nav-item">
                         <a class="nav-link active" href="apms">Lập danh sách khám</a>
                     </li>
-                    {% elif current_user.role.name == 'DOCTOR'%}
+                        {% elif current_user.role.name == 'DOCTOR'%}
                     <li class="nav-item">
                         <a class="nav-link active" href="medicalrp">Lập phiếu khám</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="medicine">Tra cứu thuốc</a>
                     </li>
-                    {% endif %}
+                        {% endif %}
+
                     {% endif %}
 
 

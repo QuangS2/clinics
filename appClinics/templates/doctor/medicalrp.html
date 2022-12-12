@@ -3,14 +3,15 @@
         <input type="text" class="form-control col-sm-4" placeholder="Nhập mã đăng ký khám..." id="kw-rp">
         <button type="button" class="btn btn-info" onclick="getPatients()">Tìm kiếm</button>
     </div>
-    <div class=" d-flex justify-content-center" id="search-rs">
+    <div class=" d-flex justify-content-center" id="patients-rs">
     </div>
 </div>
-<div class="report-area">
+<div class="report-area p-3" style="display:none">
+    <button type="button" class="btn btn-info col-sm-3 btn-sm">Lịch sử khám bệnh</button>
     <div class="container p-3 row">
         <div class="d-flex justify-content-center border border-dark"> PHIẾU KHÁM BỆNH</div>
-        <div class="border border-dark col-sm-6 p-3">Họ tên:</div>
-        <div class="border border-dark col-sm-6 p-3">Ngày khám:</div>
+        <div class="border border-dark col-sm-6 p-3" id="rp-name"></div>
+        <div class="border border-dark col-sm-6 p-3" id="rp-date"></div>
         <div class="border border-dark col-sm-6 p-3">
             <label for="hint">Triệu chứng</label>
             <input type="text" class="form-control" id="hint">
@@ -23,17 +24,39 @@
             <thead>
             <tr>
                 <!--          <th>#</th>-->
-                <th>STT</th>
+<!--                <th>STT</th>-->
                 <th>Thuốc</th>
                 <th>Đơn vị</th>
                 <th>Số lượng</th>
                 <th>Cách dùng</th>
+                <th></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id = "add-medicines">
+
             </tbody>
         </table>
-
-        <button type="button" class="btn btn-info col-sm-3">Thêm đơn thuốc</button>
     </div>
+    <div class=" d-flex">
+        <button type="button" class="btn btn-info" onclick="getMedicine(1)">Tra cứu thuốc</button>
+        <input type="text" class="form-control col-sm-3" placeholder="Nhập tên thuốc, triệu chứng..." id="kw-medicine">
+    </div>
+    <div class=" d-flex justify-content-center" id="medicine-rs">
+    <i id="no-rs" style="display:none">Không tìm thầy kết quả</i>
+    <table class="table table-hover" id="table-medicine" style="display:none">
+        <thead>
+        <tr id="title-medicine">
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Đơn vị</th>
+            <th>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="medicine-item">
+
+        </tbody>
+    </table>
+</div>
+
 </div>

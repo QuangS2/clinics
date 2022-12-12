@@ -95,7 +95,7 @@ class MedicalReport(BaseModel):  # PhieuKham
     appointment_id = Column(Integer, ForeignKey(Appointment.id), nullable=False)
     symptom = Column(String(255), nullable=False)
     predict = Column(String(255), nullable=False)
-
+    active = Column(Boolean,default=False)
 
 class Medicine(BaseModel):  # thuoc
     __tablename__ = 'Medicine'
@@ -123,7 +123,6 @@ class Bill(BaseModel):  # hoaDon
     cashier_id = Column(Integer, ForeignKey(User.id), nullable=False)
     medicalExpenses = Column(Integer, nullable=False)
     medicineExpenses = Column(Integer, nullable=False)
-
 
 class Action(BaseModel):  # quantri
     __tablename__ = 'Action'
@@ -156,7 +155,7 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-        # import hashlib
+        import hashlib
         #
         # u = User(name='Lan', gender=GenderRole.MALE, birthday="2002/5/8",address='DH babon', role=UserRole.NURSE,\
         #          CCCD="584715468",phone="545155454")
