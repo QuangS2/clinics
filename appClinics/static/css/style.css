@@ -199,6 +199,6 @@ e:active{
     .table-bordered > tbody > tr > td{
     border:2px solid black!important;
     }
-.medical {
+    .medical {
     margin-top : 0;
 }
