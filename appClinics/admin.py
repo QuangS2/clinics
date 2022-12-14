@@ -44,7 +44,7 @@ class MedicineView(AuthenticatedModelView):
         'content': 'Mô tả',
         'price': 'Gía'
     }
-    page_size = 5
+    page_size = 10
     extra_js = ['//cdn.ckeditor.com/4.6.0/standard/ckeditor.js']
     form_overrides = {
         'content': CKTextAreaField
