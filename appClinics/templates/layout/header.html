@@ -40,6 +40,10 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="medicine">Tra cứu thuốc</a>
                     </li>
+                     {% elif current_user.role.name == 'CASHIER' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="bill">Đơn thuốc</a>
+                    </li>
                         {% endif %}
 
                     {% endif %}

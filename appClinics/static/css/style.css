@@ -202,3 +202,7 @@ e:active{
     .medical {
     margin-top : 0;
 }
+
+    .border-2 {
+    border:2px solid black!important;
+    }

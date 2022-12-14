@@ -4,7 +4,7 @@ from flask import render_template, request, redirect, url_for, jsonify
 
 from appClinics import app, dao, login, utils, admin
 from flask_login import login_user, logout_user
-from appClinics.decorator import annonynous_user, nurse_user, doctor_user
+from appClinics.decorator import annonynous_user, nurse_user, doctor_user , cashier_user
 
 @app.route("/")
 def index():
@@ -242,6 +242,11 @@ def generalExamination():
 @app.route("/price")
 def price():
     return render_template('price.html')
+
+@app.route("/bill")
+@cashier_user
+def billCas():
+    return render_template('cashier.html', site = 'bill')
 
 if __name__ == '__main__':
     app.run(debug=True)
