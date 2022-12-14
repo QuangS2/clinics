@@ -142,6 +142,19 @@ function getReport(apm_id){
         }
     });
 }
+function createReport(){
+   rp_id = document.querySelector(".report-area").value;
+   fetch(`/api/report/${rp_id}`, {
+        method: "post",
+        body: JSON.stringify({
+            "rp_id": rp_id,
+            "medicine_id":medicine_id
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+}
 function getUserById(user_id){
      fetch(`/api/apm/${apm_id}`, {
         method: "get"

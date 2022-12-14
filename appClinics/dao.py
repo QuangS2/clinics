@@ -134,9 +134,18 @@ def create_medicine_rp(data):
     db.session.commit()
 
     return rp
+def completeRp(rp_id):
+    rp = MedicalReport.query.get(rp_id);
+    if rp:
+        rp.active = True
+        db.session.add(rp)
+        db.session.commit()
+        return True
+    return False
+# medicine
 def get_medicine_rp(apm_id):
     return MedicalReport.query.filter(MedicalReport.appointment_id.__eq__(apm_id)).first()
-# medicine
+
 def get_medicines_by_kw(kw):
     if kw == "ALL": kw = ""
     return Medicine.query.filter(or_(Medicine.name.like('%' + kw + '%'),

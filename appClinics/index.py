@@ -2,7 +2,7 @@ import datetime
 
 from flask import render_template, request, redirect, url_for, jsonify
 
-from appClinics import app, dao, login, utils
+from appClinics import app, dao, login, utils, admin
 from flask_login import login_user, logout_user
 from appClinics.decorator import annonynous_user, nurse_user, doctor_user
 
@@ -45,8 +45,16 @@ def login_my_user():
 def logout_my_user():
     logout_user()
     return redirect('/login')
+@app.route('/login-admin', methods=['post'])
+def login_admin():
+    username = request.form['username']
+    password = request.form['password']
 
+    user = dao.auth_user(username=username, password=password)
+    if user:
+        login_user(user=user)
 
+    return redirect('/admin')
 #appoinment dk kham
 
 
@@ -208,7 +216,13 @@ def addMedicine():
     rs = utils.Prescribe(pr);
     rs['medicine'] = utils.Medicine(medicine)
     return jsonify(rs)
+@app.route("/api/report/<int:rp_id>", methods=['post'])
+def completeRp(rp_id):
+    rs = dao.completeRp(rp_id)
 
+    return jsonify({
+        "result":rs
+    })
 #prescribe
 @app.route("/api/prescribe/<int:pres_id>", methods = ['delete'])
 def deletePrescribe(pres_id):
