@@ -1,28 +1,55 @@
 {% extends 'admin/master.html' %}
-
 {% block body %}
-
+<style>
+        .thumbnail:hover {
+        background-color: red;
+        opacity: 0.5;
+    }
+</style>
 {% if current_user.is_authenticated %}
+<div class="container mt-3">
+    <h3 class="text-center text-success">TRANG CHỦ QUẢN TRỊ BỆNH VIỆN</h3>
+    <div class="container">
+        <div class="row">
 
-<h1 class="text-center text-success">TRANG CHỦ QUẢN TRỊ BỆNH VIỆN</h1>
-<h3>Chào <span class="text-danger">{{ current_user.name }}</span>!</h3>
+            <div class="col-sm-4 border">
+                <a class="thumbnail"><img src="https://tronhouse.com/assets/data/editor/source/chup%20hinh%20san%20pham%2001189.jpg"
+                                          class="mx-auto d-block img-fluid" alt="City"></a>
+                <p class="text-center">Facebook admin</p>
+            </div>
+
+            <div class="col-sm-4 border">
+                <a class="thumbnail"><img src="https://applecenter.com.vn/uploads/image/images/gmail-2.jpg"
+                                          class="mx-auto d-block img-fluid" alt="City"></a>
+                <p class="text-center">Gmail admin</p>
+            </div>
+
+            <div class="col-sm-4 border">
+                <a class="thumbnail"><img src="https://lthub.ubc.ca/files/2021/06/GitHub-Logo.png"
+                                          class="mx-auto d-block img-fluid" alt="City"></a>
+                <p class="text-center">Gmail admin</p>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-5 col-sm-12">
-<!--        <table class="table">-->
-<!--            <tr>-->
-<!--                <th>Id</th>-->
-<!--                <th>Tên danh mục</th>-->
-<!--                <th>Số lượng SP</th>-->
-<!--            </tr>-->
-<!--            {% for s in stats %}-->
-<!--            <tr>-->
-<!--                <td>{{ s[0] }}</td>-->
-<!--                <td>{{ s[1] }}</td>-->
-<!--                <td>{{ s[2] }}</td>-->
-<!--            </tr>-->
-<!--            {% endfor %}-->
-<!--        </table>-->
+        <!--        <table class="table">-->
+        <!--            <tr>-->
+        <!--                <th>Id</th>-->
+        <!--                <th>Tên danh mục</th>-->
+        <!--                <th>Số lượng SP</th>-->
+        <!--            </tr>-->
+        <!--            {% for s in stats %}-->
+        <!--            <tr>-->
+        <!--                <td>{{ s[0] }}</td>-->
+        <!--                <td>{{ s[1] }}</td>-->
+        <!--                <td>{{ s[2] }}</td>-->
+        <!--            </tr>-->
+        <!--            {% endfor %}-->
+        <!--        </table>-->
     </div>
     <div class="col-md-7 col-sm-12">
         <canvas id="cateStats"></canvas>
@@ -40,6 +67,11 @@
   window.onload = function() {
     drawCateStats(labels, data)
   }
+
+
+
+
+
 </script>
 
 {% else %}

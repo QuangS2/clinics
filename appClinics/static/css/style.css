@@ -200,9 +200,23 @@ e:active{
     border:2px solid black!important;
     }
     .medical {
-    margin-top : 0;
-}
+        margin-top : 0;
+    }
 
     .border-2 {
-    border:2px solid black!important;
+        border:2px solid black!important;
     }
+
+    .img-fluid {
+        transition: transform .2s;
+        max-width: 100%;
+    }
+
+    .thumbnail:hover {
+        background-color: red;
+        opacity: 0.5;
+    }
+
+
+
+
